@@ -1,6 +1,7 @@
 package com.workshop.magic.config;
 
 import com.workshop.magic.service.GreetingService;
+import com.workshop.magic.service.slf4j.BeepGreetingService;
 import com.workshop.magic.service.slf4j.LoggerGreetingService;
 import com.workshop.magic.service.stdout.StdOutGreetingService;
 
@@ -32,4 +33,11 @@ public class GreetingAutoConfiguration {
         return new LoggerGreetingService(properties.getText());
     }
 
+    @Bean
+    @ConditionalOnMissingBean
+    @MyCustomCondition
+    @ConditionalOnClass(BeepGreetingService.class)
+    GreetingService beepGreetingService(GreetingProperties properties) {
+        return new BeepGreetingService(properties.getText());
+    }
 }

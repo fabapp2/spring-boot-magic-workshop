@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WorkshopApplication {
 
     public static void main(String[] args) {
+        System.setProperty("my.custom.condition", "true");
         SpringApplication.run(WorkshopApplication.class, args);
     }
 }
