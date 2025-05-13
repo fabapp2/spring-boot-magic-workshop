@@ -22,7 +22,7 @@ public class GreetingAutoConfiguration {
     @ConditionalOnClass(StdOutGreetingService.class)
     @ConditionalOnProperty(name = "workshop.greeting.type", havingValue = "stdout", matchIfMissing = true)
     GreetingService stdOutGreetingService(GreetingProperties properties) {
-        return new StdOutGreetingService(properties.getText());
+        return new StdOutGreetingService(properties.getPrefix());
     }
 
     @Bean
@@ -30,7 +30,7 @@ public class GreetingAutoConfiguration {
     @ConditionalOnClass(LoggerGreetingService.class)
     @ConditionalOnProperty(name = "workshop.greeting.type", havingValue = "logger")
     GreetingService slf4jGreetingService(GreetingProperties properties) {
-        return new LoggerGreetingService(properties.getText());
+        return new LoggerGreetingService(properties.getPrefix());
     }
 
     @Bean
@@ -38,6 +38,6 @@ public class GreetingAutoConfiguration {
     @MyCustomCondition
     @ConditionalOnClass(BeepGreetingService.class)
     GreetingService beepGreetingService(GreetingProperties properties) {
-        return new BeepGreetingService(properties.getText());
+        return new BeepGreetingService(properties.getPrefix());
     }
 }
