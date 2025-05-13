@@ -2,9 +2,7 @@ package com.workshop.magic.app;
 
 import com.workshop.magic.service.AbstractGreetingService;
 
-import org.springframework.stereotype.Service;
-
-@Service
+//@Service
 class MyGreetingService extends AbstractGreetingService {
 
     @Override

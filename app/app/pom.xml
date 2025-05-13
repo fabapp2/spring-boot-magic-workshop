@@ -17,7 +17,15 @@
     <dependencies>
         <dependency>
             <groupId>com.workshop</groupId>
+            <artifactId>library-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.workshop</groupId>
             <artifactId>library-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.workshop</groupId>
+            <artifactId>library-stdout</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
