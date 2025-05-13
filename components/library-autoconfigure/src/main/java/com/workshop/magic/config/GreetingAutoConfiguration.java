@@ -7,26 +7,29 @@ import com.workshop.magic.service.stdout.StdOutGreetingService;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 @AutoConfiguration
 @ConditionalOnClass(GreetingService.class)
+@EnableConfigurationProperties(GreetingProperties.class)
 public class GreetingAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
     @ConditionalOnClass(StdOutGreetingService.class)
-    @ConditionalOnMissingClass("com.workshop.magic.service.slf4j.LoggerGreetingService")
-    GreetingService stdOutGreetingService() {
-        return new StdOutGreetingService();
+    @ConditionalOnProperty(name = "workshop.greeting.type", havingValue = "stdout", matchIfMissing = true)
+    GreetingService stdOutGreetingService(GreetingProperties properties) {
+        return new StdOutGreetingService(properties.getText());
     }
 
     @Bean
     @ConditionalOnMissingBean
     @ConditionalOnClass(LoggerGreetingService.class)
-    GreetingService slf4jGreetingService() {
-        return new LoggerGreetingService();
+    @ConditionalOnProperty(name = "workshop.greeting.type", havingValue = "logger")
+    GreetingService slf4jGreetingService(GreetingProperties properties) {
+        return new LoggerGreetingService(properties.getText());
     }
 
 }

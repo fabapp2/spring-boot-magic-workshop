@@ -1,5 +1,8 @@
 package com.workshop.magic.config;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@ConfigurationProperties(prefix = "workshop.greeting")
 public class GreetingProperties {
     private String text = "Hello";
     private Type type = Type.STDOUT;
