@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.5</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.workshop</groupId>
+    <artifactId>spring-boot-magic</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>app/app</module>
+        <module>components/library-autoconfigure</module>
+        <module>components/library-api</module>
+        <module>components/library-slf4j</module>
+        <module>components/library-stdout</module>
+        <module>components/library-spring-boot-starter</module>
+    </modules>
+
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.workshop</groupId>
+                <artifactId>app</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.workshop</groupId>
+                <artifactId>library-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.workshop</groupId>
+                <artifactId>library-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.workshop</groupId>
+                <artifactId>library-slf4j</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.workshop</groupId>
+                <artifactId>library-stdout</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.workshop</groupId>
+                <artifactId>library-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
